@@ -75,14 +75,14 @@ export default {
         };
 
         classData.componentWillUnmount = function() {
-            var chart = this.state.chart;
-            chart.destroy();
+            let chart = this.state.chart;
+            chart && chart.destroy();
         };
 
         classData.componentWillReceiveProps = function(nextProps) {
             var chart = this.state.chart;
             if (nextProps.redraw) {
-                chart.destroy();
+                chart && chart.destroy();
                 this.initializeChart(nextProps);
             } else {
                 dataKey = dataKey || dataKeys[chart.name];
